@@ -28,6 +28,17 @@ def post_list_and_create(request):
        
     return render(request, 'posts/main.html', context)
 
+def post_detail(request, pk):
+    obj = Post.objects.get(pk=pk)
+    form = PostForm()
+    
+    context = {
+        'obj': obj, 
+        'form': form,
+    }
+    
+    return render(request, 'posts/detail.html', context)
+
 def load_post_data_view(request, num_posts):
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         visible = 3
