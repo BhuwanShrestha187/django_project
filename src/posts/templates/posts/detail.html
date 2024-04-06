@@ -57,6 +57,30 @@
             </div>
         </div>
     
+        {% comment %} Carousel {% endcomment %}
+        {% if obj.get_photos %}
+            <div id="carouselExampleSlidesOnly" class="carousel slide mb-2" data-ride="carousel">
+                <div class="carousel-inner">
+                    {% for p in  obj.get_photos %}
+                        <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
+                            <img src="{{p.image.url}}" class="d-block w-100"  alt="photo {{obj.pk}}">
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        {% else %}
+            <div class="mt-2 mb-2">No photos to show</div>
+        {% endif %}
+
+       
     
     <button id="back-btn" class="btn btn-info">back</button>
     <button id="update-btn" class="btn btn-primary not-visible" data-bs-toggle="modal" data-bs-target="#updateModal">update</button>
