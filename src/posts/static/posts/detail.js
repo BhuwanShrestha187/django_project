@@ -23,10 +23,10 @@ const csrf = document.getElementsByName('csrfmiddlewaretoken')
 
 const alertBox = document.getElementById('alert-box')
 
-backBtn.addEventListener('click',
-    e => {
-        history.back()
-    })
+// backBtn.addEventListener('click',
+//     e => {
+//         history.back()
+//     })
 
 
 $.ajax({
